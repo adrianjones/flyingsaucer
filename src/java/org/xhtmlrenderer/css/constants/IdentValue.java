@@ -51,6 +51,15 @@ import org.xhtmlrenderer.util.XRRuntimeException;
  * .
  *
  * @author Patrick Wright
+ * 
+ * Allows the new IdentValue.CHARWRAP ("charwrap") support.
+ * The new IndentValue is for support for character warpping of whitespaces.  Some languages 
+ * do not contain whitespaces or breaks between words that can be used for wrapping. This fix 
+ * allows sections in the XML/XHTML/CSS to wrap on any character and render the page correctly.
+ * Style Usage: "white-space:charwrap;"
+ * 
+ * @author Adrian Jones
+ * @since 11/04/2012
  */
 public class IdentValue implements FSDerivedValue {
     private static int maxAssigned = 0;
@@ -76,6 +85,7 @@ public class IdentValue implements FSDerivedValue {
     public final static IdentValue BOTTOM = addValue("bottom");
     public final static IdentValue CAPITALIZE = addValue("capitalize");
     public final static IdentValue CENTER = addValue("center");
+    public final static IdentValue CHARWRAP = addValue("charwrap");
     public final static IdentValue CIRCLE = addValue("circle");
     public final static IdentValue CJK_IDEOGRAPHIC = addValue("cjk-ideographic");
     public final static IdentValue CLOSE_QUOTE = addValue("close-quote");

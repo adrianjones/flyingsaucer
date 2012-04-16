@@ -1,4 +1,11 @@
 Flying Saucer
+========================================================================================================================
+Release R9-aj1
+April 11, 2012
+Allow support character wrapping in XML/XHTML files - required by certain langauges with no whitespace or breaks.
+To use this, use 'white-space:charwrap' in the css.
+
+========================================================================================================================
 Release R8
 April 18, 2009
 

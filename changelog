@@ -1,6 +1,12 @@
 CHANGELOG
 
-
+Release R9-aj1
+April 11, 2012
+Allows the new IdentValue.CHARWRAP ("charwrap") support.
+The new IndentValue is for support for character warpping of whitespaces.  Some languages 
+do not contain whitespaces or breaks between words that can be used for wrapping. This fix 
+allows sections in the XML/XHTML/CSS to wrap on any character and render the page correctly.
+Style Usage: "white-space:charwrap;"
 
 Release R7pre1
 September 11, 2006

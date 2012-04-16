@@ -28,6 +28,14 @@ import org.xhtmlrenderer.render.FSFont;
  * A utility class that scans the text of a single inline box, looking for the 
  * next break point.
  * @author Torbj�rn Gannholm
+ *
+ * Allows the new IdentValue.CHARWRAP ("charwrap") support.
+ * The new IndentValue is for support for Asian languages.  Some of these languages do not 
+ * contain whitespaces or breaks that can be used for wrapping. This fix allows sections in 
+ * the XML/HTML/CSS to wrap on any character and render the page correctly.
+ * 
+ * @author Adrian Jones
+ * @since 11/04/2012
  */
 public class Breaker {
 
@@ -103,7 +111,8 @@ public class Breaker {
         }
         
         context.setEndsOnNL(false);
-        doBreakText(c, context, avail, style, false);
+        boolean characterWrapping = (whitespace == IdentValue.CHARWRAP);        
+        doBreakText(c, context, avail, style, characterWrapping);
     }
     
     private static void doBreakText(LayoutContext c,

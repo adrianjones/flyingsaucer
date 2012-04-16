@@ -25,9 +25,14 @@ package org.xhtmlrenderer;
  * Currently maintained manually. Inspired by Version in http://huckster.dev.java.net
  *
  * @author Patrick Wright
+ * 
+ * Update version information.
+ * 
+ * @author Adrian Jones
+ * @since 11/04/2012
  */
 public class Version {
-    static final String version="R5pre1";
-    static final String buildDay = "June 12 2005";
-    static final String buildNumber = "0";
+    static final String version     = "R9-aj1";
+    static final String buildDay    = "April 11 2012";
+    static final String buildNumber = "20120411";
 }

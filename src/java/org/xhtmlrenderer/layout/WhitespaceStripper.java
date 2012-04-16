@@ -30,6 +30,15 @@ import org.xhtmlrenderer.render.InlineBox;
 
 /**
  * @author Torbj�rn Gannholm
+ * 
+ * Allows the new IdentValue.CHARWRAP ("charwrap") support.
+ * The new IndentValue is for support for character warpping of whitespaces.  Some languages 
+ * do not contain whitespaces or breaks between words that can be used for wrapping. This fix 
+ * allows sections in the XML/XHTML/CSS to wrap on any character and render the page correctly.
+ * Style Usage: "white-space:charwrap;"
+ * 
+ * @author Adrian Jones
+ * @since 11/04/2012
  */
 public class WhitespaceStripper {
     public final static String SPACE = " ";
@@ -129,12 +138,12 @@ public class WhitespaceStripper {
 
         text = collapseWhitespace(whitespace, text, collapseLeading);
 
-        boolean collapseNext = (text.endsWith(SPACE) &&
-                (whitespace == IdentValue.NORMAL || whitespace == IdentValue.NOWRAP || whitespace == IdentValue.PRE));
+        boolean collapseNext = (text.endsWith(SPACE) && (whitespace == IdentValue.NORMAL || whitespace == IdentValue.NOWRAP || whitespace == IdentValue.CHARWRAP || whitespace == IdentValue.PRE)); // IdentValue.CHARWRAP added
 
         iB.setText(text);
         if (text.trim().equals("")) {
-            if (whitespace == IdentValue.NORMAL || whitespace == IdentValue.NOWRAP) {
+            if (whitespace == IdentValue.NORMAL || whitespace == IdentValue.NOWRAP || whitespace == IdentValue.CHARWRAP) // IdentValue.CHARWRAP added 
+            {
                 iB.setRemovableWhitespace(true);
             } else if (whitespace == IdentValue.PRE) {
                 iB.setRemovableWhitespace(false);//actually unnecessary, is set to this by default

@@ -55,6 +55,15 @@ import org.xhtmlrenderer.newtable.TableRowBox;
 /**
  * A block box as defined in the CSS spec.  It also provides a base class for
  * other kinds of block content (for example table rows or cells).
+ * 
+ * Allows the new IdentValue.CHARWRAP ("charwrap") support.
+ * The new IndentValue is for support for character warpping of whitespaces.  Some languages 
+ * do not contain whitespaces or breaks between words that can be used for wrapping. This fix 
+ * allows sections in the XML/XHTML/CSS to wrap on any character and render the page correctly.
+ * Style Usage: "white-space:charwrap;"
+ * 
+ * @author Adrian Jones
+ * @since 11/04/2012
  */
 public class BlockBox extends Box implements InlinePaintable {
 
@@ -1623,7 +1632,11 @@ public class BlockBox extends Box implements InlinePaintable {
 
                 iB.calcMinMaxWidth(c, getContentWidth(), lineWidth == 0);
 
-                if (whitespace == IdentValue.NOWRAP) {
+                if (whitespace == IdentValue.CHARWRAP) { // IdentValue.CHARWRAP added
+                    lineWidth += textIndent + iB.getMaxWidth();
+                    childMinWidth = 1;
+                    trimmableIB = null;
+                } else if (whitespace == IdentValue.NOWRAP) {
                     lineWidth += textIndent + iB.getMaxWidth();
                     if (iB.getMinWidth() > childMinWidth) {
                         childMinWidth = iB.getMinWidth();

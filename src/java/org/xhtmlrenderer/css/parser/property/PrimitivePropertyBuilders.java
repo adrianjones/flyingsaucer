@@ -35,6 +35,16 @@ import org.xhtmlrenderer.css.parser.PropertyValue;
 import org.xhtmlrenderer.css.parser.Token;
 import org.xhtmlrenderer.css.sheet.PropertyDeclaration;
 
+/**
+ * Allows the new IdentValue.CHARWRAP ("charwrap") support.
+ * The new IndentValue is for support for character warpping of whitespaces.  Some languages 
+ * do not contain whitespaces or breaks between words that can be used for wrapping. This fix 
+ * allows sections in the XML/XHTML/CSS to wrap on any character and render the page correctly.
+ * Style Usage: "white-space:charwrap;"
+ * 
+ * @author Adrian Jones
+ * @since 11/04/2012
+ */
 public class PrimitivePropertyBuilders {
     // none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset
     public static final BitSet BORDER_STYLES = setFor(
@@ -1455,10 +1465,10 @@ public class PrimitivePropertyBuilders {
     }
 
     public static class WhiteSpace extends SingleIdent {
-        // normal | pre | nowrap | pre-wrap | pre-line | inherit
+        // normal | pre | nowrap | charwrap | pre-wrap | pre-line | inherit
         private static final BitSet ALLOWED = setFor(
                 new IdentValue[] {
-                        IdentValue.NORMAL, IdentValue.PRE, IdentValue.NOWRAP,
+                        IdentValue.NORMAL, IdentValue.PRE, IdentValue.NOWRAP, IdentValue.CHARWRAP,
                         IdentValue.PRE_WRAP, IdentValue.PRE_LINE});
 
         protected BitSet getAllowed() {
